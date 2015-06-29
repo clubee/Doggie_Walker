@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"/>
+    <!--android:src="@drawable/splash" -->
+
+    <LinearLayout
+        android:layout_width="200dip"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
+
+        <Button
+            android:id="@+id/btn_SouDogWalker"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:text="Sou um dog walker"
+            android:onClick="cadastro_dogwalker"/>
+
+        <Button
+            android:id="@+id/btn_ProcuroDogWalker"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/btn_SouDogWalker"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:text="Procuro um dog walker"
+            android:onClick="cadastro_usuario"/>
+    </LinearLayout>
+</RelativeLayout>

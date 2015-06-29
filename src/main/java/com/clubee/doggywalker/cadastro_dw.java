@@ -90,13 +90,13 @@ public class cadastro_dw extends Activity {
             } catch (Exception e) {
                 Log.e("cadastro_dw", e.getMessage(), e);
             }
-
             return null;
         }
 
         @Override
         protected void onPostExecute(DAOPostmon DAOPostmon) {
 
+            //quando a tag Logradouro estiver disponiivel no retorno da api rest
             if (DAOPostmon.getLogradouro() == null) {
 
                 TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
@@ -109,8 +109,9 @@ public class cadastro_dw extends Activity {
                 greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
                 greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
                 greetingCEP.setText(DAOPostmon.getCep());
-
             } else {
+
+                //senão, quando não tiver a tag logradouro, usar endereco
 
                 TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
                 TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);

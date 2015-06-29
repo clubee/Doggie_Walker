@@ -87,15 +87,15 @@ public class cadastro_user extends ActionBarActivity {
         });
     }
 
-    private class HttpRequestTask extends AsyncTask<Void, Void, Greeting> {
+    private class HttpRequestTask extends AsyncTask<Void, Void, DAOPostmon> {
         @Override
-        protected Greeting doInBackground(Void... params) {
+        protected DAOPostmon doInBackground(Void... params) {
             try {
                 final String url = "http://api.postmon.com.br/v1/cep/"+char_CEP.getText();
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                Greeting greeting = restTemplate.getForObject(url, Greeting.class);
-                return greeting;
+                DAOPostmon DAOPostmon = restTemplate.getForObject(url, DAOPostmon.class);
+                return DAOPostmon;
             } catch (Exception e) {
                 Log.e("cadastro_user", e.getMessage(), e);
             }
@@ -104,19 +104,19 @@ public class cadastro_user extends ActionBarActivity {
         }
 
         @Override
-        protected void onPostExecute(Greeting greeting) {
+        protected void onPostExecute(DAOPostmon DAOPostmon) {
             TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
             TextView greetingEndereco = (TextView) findViewById(R.id.inputLogradouro2);
             TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
             TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
             TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
             TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
-            greetingLogradouro.setText(greeting.getLogradouro());
-            greetingEndereco.setText(greeting.getEndereco());
-            greetingCidade.setText(greeting.getCidade());
-            greetingBairro.setText(greeting.getBairro());
-            greetingEstado.setText(greeting.getEstado());
-            greetingCEP.setText(greeting.getCep());
+            greetingLogradouro.setText(DAOPostmon.getLogradouro());
+            greetingEndereco.setText(DAOPostmon.getEndereco());
+            greetingCidade.setText(DAOPostmon.getCidade());
+            greetingBairro.setText(DAOPostmon.getBairro());
+            greetingEstado.setText(DAOPostmon.getEstado());
+            greetingCEP.setText(DAOPostmon.getCep());
         }
     }
 

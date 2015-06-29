@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * Created by barcat on 6/26/15.
  */
-public class Greeting {
+public class DAOPostmon {
     @JsonIgnoreProperties(ignoreUnknown = true)
 
     private String cep;

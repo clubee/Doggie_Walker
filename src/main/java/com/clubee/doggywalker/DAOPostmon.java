@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * Created by barcat on 6/26/15.
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DAOPostmon {
-    @JsonIgnoreProperties(ignoreUnknown = true)
 
     private String cep;
     private String bairro;
@@ -31,19 +31,8 @@ public class DAOPostmon {
         return this.cidade;
     }
 
-    @JsonIgnore
     public String getEndereco() {
         return this.endereco;
-    }
-
-    @JsonIgnore
-    public String getEstadoInfo() {
-        return this.estado_info;
-    }
-
-    @JsonIgnore
-    public String getCidadeInfo() {
-        return this.cidade_info;
     }
 
     public String getLogradouro() {
@@ -58,7 +47,4 @@ public class DAOPostmon {
         return this.estado;
     }
 
-    public String getCliente() {
-        return this.cliente;
-    }
 }

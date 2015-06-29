@@ -96,16 +96,33 @@ public class cadastro_dw extends Activity {
 
         @Override
         protected void onPostExecute(DAOPostmon DAOPostmon) {
-            TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
-            TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
-            TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
-            TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
-            TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
-            greetingLogradouro.setText(DAOPostmon.getLogradouro().toUpperCase());
-            greetingCidade.setText(DAOPostmon.getCidade().toUpperCase());
-            greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
-            greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
-            greetingCEP.setText(DAOPostmon.getCep());
+
+            if (DAOPostmon.getLogradouro() == null) {
+
+                TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
+                TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
+                TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
+                TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
+                TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
+                greetingLogradouro.setText(DAOPostmon.getEndereco().toUpperCase());
+                greetingCidade.setText(DAOPostmon.getCidade().toUpperCase());
+                greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
+                greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
+                greetingCEP.setText(DAOPostmon.getCep());
+
+            } else {
+
+                TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
+                TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
+                TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
+                TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
+                TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
+                greetingLogradouro.setText(DAOPostmon.getLogradouro().toUpperCase());
+                greetingCidade.setText(DAOPostmon.getCidade().toUpperCase());
+                greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
+                greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
+                greetingCEP.setText(DAOPostmon.getCep());
+            }
         }
     }
 

@@ -58,7 +58,6 @@ public class cadastro_user extends ActionBarActivity {
         char_Nome = (EditText) findViewById(R.id.inputNome);
         char_Email = (EditText) findViewById(R.id.inputEmail);
         char_Logradouro = (EditText) findViewById(R.id.inputLogradouro);
-        char_Endereco = (EditText) findViewById(R.id.inputLogradouro2);
         char_Cidade = (EditText) findViewById(R.id.inputCidade);
         char_Estado = (EditText) findViewById(R.id.inputEstado);
         char_Bairro = (EditText)findViewById(R.id.inputBairro);
@@ -66,7 +65,6 @@ public class cadastro_user extends ActionBarActivity {
 
         //Criar botão
         Button btnCadastraUsuario = (Button) findViewById(R.id.btnCadastraUsuario);
-        Button btnBuscaCEP = (Button) findViewById(R.id.btnBuscaEndereco);
 
         //Criar evento do botão
         btnCadastraUsuario.setOnClickListener(new View.OnClickListener() {
@@ -76,48 +74,6 @@ public class cadastro_user extends ActionBarActivity {
                 new CadastraCliente().execute();
             }
         });
-
-        //Criar evento do botão
-        btnBuscaCEP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //abre thread em background
-                new HttpRequestTask().execute();
-            }
-        });
-    }
-
-    private class HttpRequestTask extends AsyncTask<Void, Void, DAOPostmon> {
-        @Override
-        protected DAOPostmon doInBackground(Void... params) {
-            try {
-                final String url = "http://api.postmon.com.br/v1/cep/"+char_CEP.getText();
-                RestTemplate restTemplate = new RestTemplate();
-                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                DAOPostmon DAOPostmon = restTemplate.getForObject(url, DAOPostmon.class);
-                return DAOPostmon;
-            } catch (Exception e) {
-                Log.e("cadastro_user", e.getMessage(), e);
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(DAOPostmon DAOPostmon) {
-            TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
-            TextView greetingEndereco = (TextView) findViewById(R.id.inputLogradouro2);
-            TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
-            TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
-            TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
-            TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
-            greetingLogradouro.setText(DAOPostmon.getLogradouro());
-            greetingEndereco.setText(DAOPostmon.getEndereco());
-            greetingCidade.setText(DAOPostmon.getCidade());
-            greetingBairro.setText(DAOPostmon.getBairro());
-            greetingEstado.setText(DAOPostmon.getEstado());
-            greetingCEP.setText(DAOPostmon.getCep());
-        }
     }
 
     class CadastraCliente extends AsyncTask<String, String, String> {

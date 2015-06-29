@@ -18,6 +18,9 @@ public class DAOPostmon {
     private String cliente;
     private String endereco;
     private String logradouro;
+    private String estado_info;
+    private String cidade_info;
+
 
 
     public String getBairro() {
@@ -31,6 +34,16 @@ public class DAOPostmon {
     @JsonIgnore
     public String getEndereco() {
         return this.endereco;
+    }
+
+    @JsonIgnore
+    public String getEstadoInfo() {
+        return this.estado_info;
+    }
+
+    @JsonIgnore
+    public String getCidadeInfo() {
+        return this.cidade_info;
     }
 
     public String getLogradouro() {

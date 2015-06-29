@@ -2,129 +2,152 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
 
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:background="#faa519"
         android:orientation="vertical">
 
 
-        <LinearLayout
+        <ImageView
+            android:id="@+id/imgVwLogo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp" />
+
+        <EditText
+            android:id="@+id/inputNome"
             android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:background="#e8e8e7"
-            android:orientation="horizontal">
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:background="#f3f3f3"
+            android:layout_below="@id/imgVwLogo"
+            android:hint="Nome completo"
+            android:paddingLeft="5dp" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginLeft="25dp"
-                android:text="Cadastre-se"
-                android:textColor="#2582C5"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="48dp"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-        </LinearLayout>
-
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="#f3f3f3"
+            android:layout_below="@id/inputNome"
+            android:hint="e-mail"
+            android:paddingLeft="5dp" />
 
         <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bkg_cinza"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="15dp" />
+            android:id="@+id/LinearCep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="15dp"
+            android:layout_below="@id/inputEmail">
 
             <EditText
-                android:id="@+id/inputNome"
-                android:layout_width="fill_parent"
+                android:id="@+id/inputCEP"
+                android:layout_width="175dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="30dp"
                 android:background="#f3f3f3"
-                android:hint="digite seu nome"
-                android:paddingLeft="5dp" />
-
-            <EditText
-                android:id="@+id/inputEmail"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="digite o seu email"
-                android:paddingLeft="5dp" />
-
-            <EditText
-                android:id="@+id/inputEndereco"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="endereço completo"
-                android:paddingLeft="5dp" />
-
-            <EditText
-                android:id="@+id/inputTipoDocumento"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="tipo de documento"
-                android:paddingLeft="5dp" />
-
-            <EditText
-                android:id="@+id/inputDocumento"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="número do documento"
-                android:paddingLeft="5dp" />
+                android:hint="CEP"
+                android:paddingLeft="5dp"
+                android:layout_toLeftOf="@+id/inputEstado"
+                android:layout_toStartOf="@+id/inputEstado" />
 
             <Button
-                android:id="@+id/btnCadastraCliente"
-                android:layout_width="190dp"
-                android:layout_height="38dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:text="enviar"
-                android:textColor="#fff" />
+                android:id="@+id/btnBuscaEndereco"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Busca Endereço"
+                android:textColor="#fff"
+                android:layout_above="@+id/inputLogradouro"
+                android:layout_toRightOf="@+id/inputCEP"
+                android:layout_toEndOf="@+id/inputCEP" />
 
         </LinearLayout>
+        <EditText
+            android:id="@+id/inputLogradouro"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="#f3f3f3"
+            android:hint="Endereço"
+            android:layout_below="@id/LinearCep"
+            android:paddingLeft="5dp" />
+
+        <EditText
+            android:id="@+id/inputBairro"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="#f3f3f3"
+            android:hint="Bairro"
+            android:layout_below="@id/inputLogradouro"
+            android:paddingLeft="5dp" />
+
+        <EditText
+            android:id="@+id/inputComplemento"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="15dp"
+            android:background="#f3f3f3"
+            android:hint="Complemento"
+            android:layout_below="@id/inputBairro"
+            android:paddingLeft="5dp" />
 
         <LinearLayout
-            android:layout_width="fill_parent"
+            android:id="@+id/LinearCidadeEstado"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"></LinearLayout>
-    </LinearLayout>
+            android:orientation="horizontal"
+            android:paddingTop="15dp"
+            android:layout_below="@id/inputComplemento">
+
+        <EditText
+            android:id="@+id/inputCidade"
+            android:layout_width="107dp"
+            android:layout_height="40dp"
+            android:background="#f3f3f3"
+            android:layout_below="@id/inputComplemento"
+            android:hint="Cidade"
+            android:paddingLeft="5dp" />
+
+        <EditText
+            android:id="@+id/inputEstado"
+            android:layout_width="92dp"
+            android:layout_height="40dp"
+            android:background="#f3f3f3"
+            android:hint="Estado"
+            android:layout_toRightOf="@+id/inputCidade"
+            android:layout_marginLeft="5dp"
+            android:layout_toEndOf="@+id/inputCidade" />
+            </LinearLayout>
+
+        <Button
+            android:id="@+id/btnContinuar"
+            android:layout_width="190dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="Continuar"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/LinearCidadeEstado"
+            android:textColor="#fff" />
+
+        <Button
+            android:id="@+id/btnCadastraCliente"
+            android:layout_width="190dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="Enviar"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/btnContinuar"
+            android:textColor="#fff"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
 </ScrollView>

@@ -2,66 +2,18 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView1"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
 
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:background="#faa519"
         android:orientation="vertical">
 
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="48dp"
-            android:layout_alignParentTop="true"
-            android:background="#e8e8e7"
-            android:orientation="horizontal">
-
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp" />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|center_vertical"
-                android:layout_marginLeft="25dp"
-                android:text="Cadastre-se"
-                android:textColor="#2582C5"
-                android:textSize="18sp"
-
-                android:textStyle="bold" />
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="48dp"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bkg_cinza"
-            android:orientation="vertical">
-
-            <ImageView
+                android:id="@+id/imgVwLogo"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_gravity="center_horizontal"
@@ -73,7 +25,8 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="30dp"
                 android:background="#f3f3f3"
-                android:hint="digite seu nome"
+                android:layout_below="@id/imgVwLogo"
+                android:hint="Nome completo"
                 android:paddingLeft="5dp" />
 
             <EditText
@@ -82,72 +35,9 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="15dp"
                 android:background="#f3f3f3"
-                android:hint="digite o seu email"
+                android:layout_below="@id/inputNome"
+                android:hint="e-mail"
                 android:paddingLeft="5dp" />
-
-            <EditText
-                android:id="@+id/inputCEP"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="Digite seu CEP"
-                android:paddingLeft="5dp" />
-
-            <EditText
-                android:id="@+id/inputLogradouro"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="endereço completo"
-                android:paddingLeft="5dp" />
-
-            <EditText
-                android:id="@+id/inputLogradouro2"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="endereço completo"
-                android:paddingLeft="5dp" />
-
-
-            <EditText
-                android:id="@+id/inputBairro"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="Bairro"
-                android:paddingLeft="5dp" />
-
-            <EditText
-                android:id="@+id/inputCidade"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="Cidade"
-                android:paddingLeft="5dp" />
-
-            <EditText
-                android:id="@+id/inputEstado"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="15dp"
-                android:background="#f3f3f3"
-                android:hint="Estado"
-                android:paddingLeft="5dp" />
-
-            <Button
-                android:id="@+id/btnBuscaEndereco"
-                android:layout_width="190dp"
-                android:layout_height="38dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:text="enviar"
-                android:textColor="#fff" />
 
             <Button
                 android:id="@+id/btnCadastraUsuario"
@@ -155,24 +45,9 @@
                 android:layout_height="38dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                android:text="enviar"
+                android:text="Enviar"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/inputEmail"
                 android:textColor="#fff" />
-
-            <TextView
-                android:id="@+id/txtView"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/showParsedJson"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"></LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 </ScrollView>

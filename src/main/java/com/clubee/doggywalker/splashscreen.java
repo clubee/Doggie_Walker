@@ -17,7 +17,7 @@ public class splashscreen extends ActionBarActivity {
     }
 
     public void cadastro_dogwalker(View view) {
-        Intent i = new Intent(this, cadastro_dw.class);
+        Intent i = new Intent(this, cadastro_cliente.class);
         startActivity(i);
     }
 

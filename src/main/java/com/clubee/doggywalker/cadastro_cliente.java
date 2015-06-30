@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class cadastro_dw extends Activity {
+public class cadastro_cliente extends Activity {
 
     //JSON node
     private static final String TAG_SUCCESS = "success";
@@ -79,16 +79,17 @@ public class cadastro_dw extends Activity {
     }
 
     private class HttpRequestTask extends AsyncTask<Void, Void, DAOPostmon> {
+        String charCepTrim = char_CEP.getText().toString().trim();
         @Override
         protected DAOPostmon doInBackground(Void... params) {
             try {
-                final String url = "http://api.postmon.com.br/v1/cep/"+char_CEP.getText();
+                final String url = "http://api.postmon.com.br/v1/cep/"+charCepTrim;
                 RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 DAOPostmon DAOPostmon = restTemplate.getForObject(url, DAOPostmon.class);
                 return DAOPostmon;
             } catch (Exception e) {
-                Log.e("cadastro_dw", e.getMessage(), e);
+                Log.e("cadastro_cliente", e.getMessage(), e);
             }
             return null;
         }
@@ -135,7 +136,7 @@ public class cadastro_dw extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(cadastro_dw.this);
+            pDialog = new ProgressDialog(cadastro_cliente.this);
             pDialog.setMessage("Cadastrando usuário..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -174,7 +175,7 @@ public class cadastro_dw extends Activity {
 
                 if (success == 1) {
                     // successfully created product
-                    Intent i = new Intent(getApplicationContext(), cadastro_dw.class);
+                    Intent i = new Intent(getApplicationContext(), cadastro_cliente.class);
                     startActivity(i);
 
                     // closing this screen

@@ -79,6 +79,11 @@ public class CadastroClientes extends Activity {
             public void onClick(View view) {
                 //abre thread em background
                 new HttpRequestTask().execute();
+
+                String endereco = char_Logradouro.getText().toString();
+                BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
+                localizacaoEnd.getAddressFromLocation(endereco,
+                        getApplicationContext(), new GeocoderHandler());
             }
         });
     }
@@ -132,28 +137,31 @@ public class CadastroClientes extends Activity {
                 greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
                 greetingCEP.setText(DAOPostmon.getCep());
             }
-
-
-            String address = char_Logradouro.getText().toString();
-            BuscaGeolocalizacao locationAddress = new BuscaGeolocalizacao();
-            locationAddress.getAddressFromLocation(address,
-                    getApplicationContext(), new GeocoderHandler());
         }
     }
+
 
     private class GeocoderHandler extends Handler {
-        public void handlerMsg(Message message){
-            String locationAddress;
-            switch (message.what){
+        @Override
+        public void handleMessage(Message message) {
+            String localizacaoEnd;
+            Double char_Latitude=null;
+            Double char_Longitude=null;
+            switch (message.what) {
                 case 1:
                     Bundle bundle = message.getData();
-                    locationAddress = bundle.getString("char_Logradouro");
+                    localizacaoEnd = bundle.getString("endereco");
+                    char_Latitude = bundle.getDouble("char_lat");
+                    char_Longitude = bundle.getDouble("char_long");
                     break;
                 default:
-                    locationAddress= null;
+                    localizacaoEnd = null;
             }
+            char_Lat.setText(char_Latitude.toString());
+            char_Long.setText(char_Longitude.toString());
         }
     }
+
 
     class CadastraCliente extends AsyncTask<String, String, String> {
 

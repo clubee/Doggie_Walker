@@ -141,26 +141,26 @@
             android:id="@+id/LinearGeolocalizacao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:paddingTop="15dp"
             android:layout_below="@id/LinearCidadeEstado">
 
             <TextView
                 android:id="@+id/inputLatitude"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
                 android:layout_below="@id/inputComplemento"
                 android:hint="Lat"
                 android:paddingLeft="5dp" />
 
             <TextView
                 android:id="@+id/inputLongitude"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
-                android:hint="Long"
-                android:layout_toRightOf="@+id/inputLatitude"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:hint="Long" />
+<!--                android:layout_toRightOf="@+id/inputLatitude"
                 android:layout_marginLeft="3dp"
-                android:layout_toEndOf="@+id/inputLatitude" />
+                android:layout_toEndOf="@+id/inputLatitude"-->
 
         </LinearLayout>
 

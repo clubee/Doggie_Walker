@@ -16,7 +16,7 @@ public class BuscaGeolocalizacao {
 
     private static final String TAG = "GeocodingLocation";
 
-    public static void getAddressFromLocation(final String locationAddress,
+    public static void getAddressFromLocation(final String localizacaoEnd,
                                               final Context context, final Handler handler) {
         Thread thread = new Thread() {
 
@@ -24,33 +24,39 @@ public class BuscaGeolocalizacao {
             public void run() {
                 Geocoder geocoder = new Geocoder(context, Locale.getDefault());
                 String result = null;
+                Double char_Lat = null;
+                Double char_Long = null;
+
                 try {
-                    List<Address> addressList = geocoder.getFromLocationName(locationAddress, 1);
+                    List<Address> addressList = geocoder.getFromLocationName(localizacaoEnd, 1);
                     if (addressList != null && addressList.size() > 0) {
-                        Address address = addressList.get(0);
+                        Address endereco = addressList.get(0);
                         StringBuilder sb = new StringBuilder();
-                        sb.append(address.getLatitude()).append("\n");
-                        sb.append(address.getLongitude()).append("\n");
+                        char_Lat = endereco.getLatitude();
+                        char_Long = endereco.getLongitude();
+                        sb.append(endereco.getLatitude()).append("\n");
+                        sb.append(endereco.getLongitude()).append("\n");
                         result = sb.toString();
+
                     }
                 } catch (IOException e) {
-                    Log.e(TAG, "Unable to connect to Geocoder", e);
+                    Log.e(TAG, "Não conectou no geocoder", e);
                 } finally {
                     Message message = Message.obtain();
                     message.setTarget(handler);
                     if (result != null) {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result = "Address: " + locationAddress +
-                                "\n\nLatitude and Longitude :\n" + result;
-                        bundle.putString("address", result);
+                        bundle.putString("endereco", result);
+                        bundle.putDouble("char_lat",char_Lat);
+                        bundle.putDouble("char_long",char_Long);
                         message.setData(bundle);
                     } else {
                         message.what = 1;
                         Bundle bundle = new Bundle();
-                        result = "Address: " + locationAddress +
-                                "\n Unable to get Latitude and Longitude for this address location.";
-                        bundle.putString("address", result);
+                        result = "Endereço: " + localizacaoEnd +
+                                "\n Não foi possivel capturar a Latitude e Longitude.";
+                        bundle.putString("endereco", result);
                         message.setData(bundle);
                     }
                     message.sendToTarget();

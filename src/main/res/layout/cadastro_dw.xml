@@ -26,7 +26,7 @@
             android:layout_marginTop="30dp"
             android:background="#f3f3f3"
             android:layout_below="@id/imgVwLogo"
-            android:hint="Nome completo"
+            android:hint="Nome"
             android:paddingLeft="5dp" />
 
         <EditText
@@ -39,13 +39,23 @@
             android:hint="e-mail"
             android:paddingLeft="5dp" />
 
+        <TextView
+            android:id="@+id/textViewLocalAtuacao"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
+            android:textSize="20dp"
+            android:layout_centerVertical="true"
+            android:layout_below="@id/inputEmail"
+            android:text="Local de Atuação"/>
+
         <LinearLayout
             android:id="@+id/LinearCep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="15dp"
-            android:layout_below="@id/inputEmail">
+            android:layout_below="@id/textViewLocalAtuacao">
 
             <EditText
                 android:id="@+id/inputCEP"
@@ -122,9 +132,37 @@
             android:background="#f3f3f3"
             android:hint="Estado"
             android:layout_toRightOf="@+id/inputCidade"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="3dp"
             android:layout_toEndOf="@+id/inputCidade" />
+
             </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/LinearGeolocalizacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="15dp"
+            android:layout_below="@id/LinearCidadeEstado">
+
+            <TextView
+                android:id="@+id/inputLatitude"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/inputComplemento"
+                android:hint="Lat"
+                android:paddingLeft="5dp" />
+
+            <TextView
+                android:id="@+id/inputLongitude"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:hint="Long"
+                android:layout_toRightOf="@+id/inputLatitude"
+                android:layout_marginLeft="3dp"
+                android:layout_toEndOf="@+id/inputLatitude" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnContinuar"
@@ -134,7 +172,7 @@
             android:layout_marginTop="16dp"
             android:text="Continuar"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/LinearCidadeEstado"
+            android:layout_below="@id/LinearGeolocalizacao"
             android:textColor="#fff" />
 
         <Button

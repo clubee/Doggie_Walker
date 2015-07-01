@@ -8,7 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class splashscreen extends ActionBarActivity {
+public class Splashscreen extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,12 +17,12 @@ public class splashscreen extends ActionBarActivity {
     }
 
     public void cadastro_dogwalker(View view) {
-        Intent i = new Intent(this, cadastro_cliente.class);
+        Intent i = new Intent(this, CadastroClientes.class);
         startActivity(i);
     }
 
     public void cadastro_usuario(View view) {
-        Intent i = new Intent(this, cadastro_user.class);
+        Intent i = new Intent(this, CadastroUsuario.class);
         startActivity(i);
     }
 

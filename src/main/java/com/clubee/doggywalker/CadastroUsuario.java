@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -17,8 +16,6 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +23,7 @@ import java.util.List;
 /**
  * Created by barcat on 6/24/15.
  */
-public class cadastro_user extends ActionBarActivity {
+public class CadastroUsuario extends ActionBarActivity {
 
     @JsonIgnoreProperties(ignoreUnknown = true)
 
@@ -84,7 +81,7 @@ public class cadastro_user extends ActionBarActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(cadastro_user.this);
+            pDialog = new ProgressDialog(CadastroUsuario.this);
             pDialog.setMessage("Cadastrando usuário..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -123,7 +120,7 @@ public class cadastro_user extends ActionBarActivity {
 
                 if (success == 1) {
                     // successfully created product
-                    Intent i = new Intent(getApplicationContext(), cadastro_user.class);
+                    Intent i = new Intent(getApplicationContext(), CadastroUsuario.class);
                     startActivity(i);
 
                     // closing this screen

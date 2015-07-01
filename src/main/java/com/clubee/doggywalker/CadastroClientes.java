@@ -5,11 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.os.Handler;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class cadastro_cliente extends Activity {
+public class CadastroClientes extends Activity {
 
     //JSON node
     private static final String TAG_SUCCESS = "success";
@@ -37,7 +39,8 @@ public class cadastro_cliente extends Activity {
     EditText char_Logradouro;
     EditText char_Endereco;
     EditText char_Bairro;
-
+    TextView char_Lat;
+    TextView char_Long;
 
     //barra de progressão
     private ProgressDialog pDialog;
@@ -54,6 +57,8 @@ public class cadastro_cliente extends Activity {
         char_Estado = (EditText) findViewById(R.id.inputEstado);
         char_Bairro = (EditText)findViewById(R.id.inputBairro);
         char_CEP = (EditText) findViewById(R.id.inputCEP);
+        char_Lat = (TextView) findViewById(R.id.inputLatitude);
+        char_Long = (TextView) findViewById(R.id.inputLongitude);
 
         //Criar botão
         Button btnCadastraCliente = (Button) findViewById(R.id.btnCadastraCliente);
@@ -80,18 +85,20 @@ public class cadastro_cliente extends Activity {
 
     private class HttpRequestTask extends AsyncTask<Void, Void, DAOPostmon> {
         String charCepTrim = char_CEP.getText().toString().trim();
+        final String url = "http://api.postmon.com.br/v1/cep/"+charCepTrim;
+        RestTemplate restTemplate = new RestTemplate();
+
         @Override
         protected DAOPostmon doInBackground(Void... params) {
             try {
-                final String url = "http://api.postmon.com.br/v1/cep/"+charCepTrim;
-                RestTemplate restTemplate = new RestTemplate();
                 restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
                 DAOPostmon DAOPostmon = restTemplate.getForObject(url, DAOPostmon.class);
                 return DAOPostmon;
             } catch (Exception e) {
-                Log.e("cadastro_cliente", e.getMessage(), e);
+                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+                DAOPostmon DAOPostmon = restTemplate.getForObject(url, DAOPostmon.class);
+                return DAOPostmon;
             }
-            return null;
         }
 
         @Override
@@ -125,6 +132,26 @@ public class cadastro_cliente extends Activity {
                 greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
                 greetingCEP.setText(DAOPostmon.getCep());
             }
+
+
+            String address = char_Logradouro.getText().toString();
+            BuscaGeolocalizacao locationAddress = new BuscaGeolocalizacao();
+            locationAddress.getAddressFromLocation(address,
+                    getApplicationContext(), new GeocoderHandler());
+        }
+    }
+
+    private class GeocoderHandler extends Handler {
+        public void handlerMsg(Message message){
+            String locationAddress;
+            switch (message.what){
+                case 1:
+                    Bundle bundle = message.getData();
+                    locationAddress = bundle.getString("char_Logradouro");
+                    break;
+                default:
+                    locationAddress= null;
+            }
         }
     }
 
@@ -136,7 +163,7 @@ public class cadastro_cliente extends Activity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            pDialog = new ProgressDialog(cadastro_cliente.this);
+            pDialog = new ProgressDialog(CadastroClientes.this);
             pDialog.setMessage("Cadastrando usuário..");
             pDialog.setIndeterminate(false);
             pDialog.setCancelable(true);
@@ -175,7 +202,7 @@ public class cadastro_cliente extends Activity {
 
                 if (success == 1) {
                     // successfully created product
-                    Intent i = new Intent(getApplicationContext(), cadastro_cliente.class);
+                    Intent i = new Intent(getApplicationContext(), CadastroClientes.class);
                     startActivity(i);
 
                     // closing this screen

@@ -62,7 +62,6 @@ public class BuscaGeolocalizacao {
                     message.sendToTarget();
                 }
             }
-
         };
         thread.start();
     }

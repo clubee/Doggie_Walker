@@ -79,11 +79,6 @@ public class CadastroClientes extends Activity {
             public void onClick(View view) {
                 //abre thread em background
                 new HttpRequestTask().execute();
-
-                String endereco = char_Logradouro.getText().toString();
-                BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
-                localizacaoEnd.getAddressFromLocation(endereco,
-                        getApplicationContext(), new GeocoderHandler());
             }
         });
     }
@@ -108,6 +103,11 @@ public class CadastroClientes extends Activity {
 
         @Override
         protected void onPostExecute(DAOPostmon DAOPostmon) {
+
+            String endereco = char_Logradouro.getText().toString();
+            BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
+            localizacaoEnd.getAddressFromLocation(endereco,
+                    getApplicationContext(), new GeocoderHandler());
 
             //quando a tag Logradouro estiver disponiivel no retorno da api rest
             if (DAOPostmon.getLogradouro() == null) {

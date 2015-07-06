@@ -45,6 +45,18 @@ public class CadastroClientes extends Activity {
     //barra de progressão
     private ProgressDialog pDialog;
 
+    public String nome;
+    public String cep;
+    public String email;
+    public String cidade;
+    public String estado;
+    public String logradouro;
+    public String endereco;
+    public String bairro;
+    public String latitude;
+    public String longitude;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -61,27 +73,41 @@ public class CadastroClientes extends Activity {
         char_Long = (TextView) findViewById(R.id.inputLongitude);
 
         //Criar botão
-        Button btnCadastraCliente = (Button) findViewById(R.id.btnCadastraCliente);
         Button btnBuscaCEP = (Button) findViewById(R.id.btnBuscaEndereco);
         Button btnProximaActivity = (Button) findViewById(R.id.btnContinuar);
 
 
         //Criar evento do botão
         btnProximaActivity.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
+
+                nome = char_Nome.getText().toString();
+                email = char_Email.getText().toString();
+                logradouro = char_Logradouro.getText().toString();
+                cidade = char_Cidade.getText().toString();
+                estado = char_Estado.getText().toString();
+                bairro = char_Bairro.getText().toString();
+                cep = char_CEP.getText().toString();
+                latitude = char_Lat.getText().toString();
+                longitude = char_Long.getText().toString();
+
                 Intent i = new Intent(CadastroClientes.this, Cadastro_ClientesDetalhes.class);
+
+                i.putExtra("nome", nome);
+                i.putExtra("cep", cep);
+                i.putExtra("email", email);
+                i.putExtra("cidade", cidade);
+                i.putExtra("estado", estado);
+                i.putExtra("logradouro", logradouro);
+                i.putExtra("bairro", bairro);
+                i.putExtra("lat", latitude);
+                i.putExtra("long", longitude);
+
                 startActivity(i);
                 finish();
-            }
-        });
-
-        //Criar evento do botão
-        btnCadastraCliente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //abre thread em background
-                new CadastraCliente().execute();
             }
         });
 
@@ -119,12 +145,12 @@ public class CadastroClientes extends Activity {
             //quando a tag Logradouro estiver disponiivel no retorno da api rest
             if (DAOPostmon.getLogradouro() == null) {
 
-                TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
+                TextView greetingEndereco = (TextView) findViewById(R.id.inputLogradouro);
                 TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
                 TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
                 TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
                 TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
-                greetingLogradouro.setText(DAOPostmon.getEndereco().toUpperCase());
+                greetingEndereco.setText(DAOPostmon.getEndereco().toUpperCase());
                 greetingCidade.setText(DAOPostmon.getCidade().toUpperCase());
                 greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
                 greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
@@ -252,6 +278,4 @@ public class CadastroClientes extends Activity {
             pDialog.dismiss();
         }
     }
-
-
 }

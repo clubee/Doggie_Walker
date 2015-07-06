@@ -16,6 +16,17 @@
             android:prompt="@string/tamPet_prompt"
             android:layout_marginTop="50dp"/>
 
+        <Button
+            android:id="@+id/btnCadastraCliente"
+            android:layout_width="fill_parent"
+            android:layout_height="38dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="Sou um DoggieWalker"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/spinner_TamPet"
+            android:textColor="#fff" />
+
     </RelativeLayout>
 
 </ScrollView>

@@ -1,0 +1,21 @@
+<!-- copyrighted content owned by Android Arena (www.androidarena.co.in)-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Spinner
+            android:id="@+id/spinner_TamPet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/tamPet_array"
+            android:prompt="@string/tamPet_prompt"
+            android:layout_marginTop="50dp"/>
+
+    </RelativeLayout>
+
+</ScrollView>

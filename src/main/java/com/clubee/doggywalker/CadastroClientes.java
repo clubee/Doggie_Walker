@@ -5,13 +5,13 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.os.Handler;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -48,7 +48,7 @@ public class CadastroClientes extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.cadastro_dw);
+        setContentView(R.layout.cadastro_clientes);
 
         char_Nome = (EditText) findViewById(R.id.inputNome);
         char_Email = (EditText) findViewById(R.id.inputEmail);
@@ -63,6 +63,18 @@ public class CadastroClientes extends Activity {
         //Criar botão
         Button btnCadastraCliente = (Button) findViewById(R.id.btnCadastraCliente);
         Button btnBuscaCEP = (Button) findViewById(R.id.btnBuscaEndereco);
+        Button btnProximaActivity = (Button) findViewById(R.id.btnContinuar);
+
+
+        //Criar evento do botão
+        btnProximaActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(CadastroClientes.this, Cadastro_ClientesDetalhes.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         //Criar evento do botão
         btnCadastraCliente.setOnClickListener(new View.OnClickListener() {
@@ -104,11 +116,6 @@ public class CadastroClientes extends Activity {
         @Override
         protected void onPostExecute(DAOPostmon DAOPostmon) {
 
-            String endereco = char_Logradouro.getText().toString();
-            BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
-            localizacaoEnd.getAddressFromLocation(endereco,
-                    getApplicationContext(), new GeocoderHandler());
-
             //quando a tag Logradouro estiver disponiivel no retorno da api rest
             if (DAOPostmon.getLogradouro() == null) {
 
@@ -122,6 +129,12 @@ public class CadastroClientes extends Activity {
                 greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
                 greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
                 greetingCEP.setText(DAOPostmon.getCep());
+
+                String endereco = char_Logradouro.getText().toString();
+                BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
+                localizacaoEnd.getAddressFromLocation(endereco,
+                        getApplicationContext(), new GeocoderHandler());
+
             } else {
 
                 //senão, quando não tiver a tag logradouro, usar endereco
@@ -136,6 +149,12 @@ public class CadastroClientes extends Activity {
                 greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
                 greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
                 greetingCEP.setText(DAOPostmon.getCep());
+
+                String endereco = char_Logradouro.getText().toString();
+                BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
+                localizacaoEnd.getAddressFromLocation(endereco,
+                        getApplicationContext(), new GeocoderHandler());
+
             }
         }
     }
@@ -161,7 +180,6 @@ public class CadastroClientes extends Activity {
             char_Long.setText(char_Longitude.toString());
         }
     }
-
 
     class CadastraCliente extends AsyncTask<String, String, String> {
 

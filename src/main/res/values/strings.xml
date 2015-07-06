@@ -2,4 +2,13 @@
     <string name="app_name">DoggyWalker</string>
     <string name="action_settings">Settings</string>
 
+
+    <string name="tamPet_prompt">Qual o tamanho do pet?</string>
+
+    <string-array name="tamPet_array">
+        <item>Grandes</item>
+        <item>Médios</item>
+        <item>Pequenos</item>
+        <item>Todos</item>
+    </string-array>
 </resources>

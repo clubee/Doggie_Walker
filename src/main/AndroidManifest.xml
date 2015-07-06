@@ -27,6 +27,11 @@ package="com.clubee.doggywalker" >
         android:label="@string/app_name" >
     </activity>
 
+    <activity
+        android:name=".Cadastro_ClientesDetalhes"
+        android:label="@string/app_name" >
+    </activity>
+
 </application>
 
 <!--  Internet Permissions -->

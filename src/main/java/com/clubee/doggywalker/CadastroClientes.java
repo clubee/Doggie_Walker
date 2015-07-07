@@ -51,7 +51,6 @@ public class CadastroClientes extends Activity {
     public String cidade;
     public String estado;
     public String logradouro;
-    public String endereco;
     public String bairro;
     public String latitude;
     public String longitude;

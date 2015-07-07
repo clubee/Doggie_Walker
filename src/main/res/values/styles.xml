@@ -1,8 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="Splash_Background" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">fill_parent</item>
+        <item name="android:background">#ff000000</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <style name="Splash_Logo" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">#ff000000</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:src">@mipmap/logo</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+
+    <style name="CodeFont" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ff0081a2</item>
+        <item name="android:typeface">monospace</item>
+    </style>
+
+
 
 </resources>

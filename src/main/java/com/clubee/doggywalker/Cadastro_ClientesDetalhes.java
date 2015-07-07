@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -82,6 +84,11 @@ public class Cadastro_ClientesDetalhes extends Activity {
          * Creating product
          */
         protected String doInBackground(String... args) {
+
+            Spinner tamanhoPet = (Spinner) findViewById(R.id.spinner_TamPet);
+            EditText descricao = (EditText)findViewById(R.id.char_SobreVoce);
+
+
             String Nome = nome.toString();
             String Cep = cep.toString();
             String Email = email.toString();
@@ -91,6 +98,10 @@ public class Cadastro_ClientesDetalhes extends Activity {
             String Bairro = bairro.toString();
             String Latitude = latitude.toString();
             String Longitude = longitude.toString();
+            String TipoLicenca = "DogWalker";
+            String TamPet = tamanhoPet.getSelectedItem().toString();
+            String SobreVc = descricao.getText().toString();
+
 
             Nome = getIntent().getStringExtra("nome");
             Cep = getIntent().getStringExtra("cep");
@@ -101,7 +112,6 @@ public class Cadastro_ClientesDetalhes extends Activity {
             Bairro = getIntent().getStringExtra("bairro");
             Latitude = getIntent().getStringExtra("lat");
             Longitude = getIntent().getStringExtra("long");
-            String TipoLicenca = "DogWalker";
 
 
             // Building Parameters
@@ -116,6 +126,8 @@ public class Cadastro_ClientesDetalhes extends Activity {
             params.add(new BasicNameValuePair("char_Lat", Latitude));
             params.add(new BasicNameValuePair("char_Long", Longitude));
             params.add(new BasicNameValuePair("char_TipoLicenca",TipoLicenca));
+            params.add(new BasicNameValuePair("char_TamPet", TamPet));
+            params.add(new BasicNameValuePair("char_Descricao", SobreVc));
 
 
             // getting JSON Object
@@ -132,7 +144,7 @@ public class Cadastro_ClientesDetalhes extends Activity {
 
                 if (success == 1) {
                     // successfully created product
-                    Intent i = new Intent(getApplicationContext(), CadastroClientes.class);
+                    Intent i = new Intent(getApplicationContext(), Cadastro_ClientesDetalhes.class);
                     startActivity(i);
                 } else {
                     // failed to create product
@@ -149,6 +161,7 @@ public class Cadastro_ClientesDetalhes extends Activity {
          * *
          */
         protected void onPostExecute(String file_url) {
+
             // dismiss the dialog once done
             pDialog.dismiss();
         }

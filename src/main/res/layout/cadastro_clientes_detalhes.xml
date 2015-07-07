@@ -16,6 +16,19 @@
             android:prompt="@string/tamPet_prompt"
             android:layout_marginTop="50dp"/>
 
+        <EditText
+            android:id="@+id/char_SobreVoce"
+            android:inputType="textMultiLine"
+            android:lines="8"
+            android:minLines="6"
+            android:gravity="top|left"
+            android:maxLines="10"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:scrollbars="vertical"
+            android:layout_below="@id/spinner_TamPet"
+            />
+
         <Button
             android:id="@+id/btnCadastraCliente"
             android:layout_width="fill_parent"
@@ -24,7 +37,7 @@
             android:layout_marginTop="16dp"
             android:text="Sou um DoggieWalker"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/spinner_TamPet"
+            android:layout_below="@id/char_SobreVoce"
             android:textColor="#fff" />
 
     </RelativeLayout>

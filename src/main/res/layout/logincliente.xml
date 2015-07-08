@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/Splash_Background">
+
+    <LinearLayout
+        android:id="@+id/linLayout"
+        android:layout_below="@+id/imgLogo"
+        style="@style/Splash_BackgroundTipoAcesso">
+
+        <Button
+            android:id="@+id/btn_SouDogWalker"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_horizontal"
+            android:text="Já tenho cadastro"
+            android:background="@drawable/btn_background"/>
+
+        <Button
+            android:id="@+id/btn_ProcuroDogWalker"
+            android:layout_marginTop="5dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_SouDogWalker"
+            android:layout_centerVertical="true"
+            android:background="@drawable/btn_background"
+            android:text="Quero me cadastrar"
+            android:onClick="cadastro_dogwalker"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLayoutLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linLayout"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/char_email"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:theme="@style/Base.Widget.AppCompat.EditText"
+            android:text="Informe seu email"
+            android:visibility="invisible"/>
+
+        <EditText
+            android:id="@+id/char_password"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Senha"
+            android:visibility="invisible"/>
+    </LinearLayout>
+</RelativeLayout>

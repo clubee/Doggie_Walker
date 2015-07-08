@@ -11,6 +11,17 @@
         <item name="android:layout_height">fill_parent</item>
         <item name="android:background">#ff000000</item>
         <item name="android:typeface">monospace</item>
+        <item name="android:gravity">center|bottom</item>
+    </style>
+
+    <style name="Splash_BackgroundTipoAcesso" parent="@android:style/TextAppearance.Medium">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">#ff000000</item>
+        <item name="android:typeface">monospace</item>
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="Splash_Logo" parent="@android:style/TextAppearance.Medium">
@@ -28,7 +39,4 @@
         <item name="android:textColor">#ff0081a2</item>
         <item name="android:typeface">monospace</item>
     </style>
-
-
-
 </resources>

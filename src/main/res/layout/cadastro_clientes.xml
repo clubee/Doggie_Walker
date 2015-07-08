@@ -6,38 +6,23 @@
 
     <RelativeLayout
 
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:background="#faa519"
-        android:orientation="vertical">
+        style="@style/Splash_Login">
 
-
-        <ImageView
-            android:id="@+id/imgVwLogo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp" />
 
         <EditText
             android:id="@+id/inputNome"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:background="#f3f3f3"
-            android:layout_below="@id/imgVwLogo"
             android:hint="Nome"
-            android:paddingLeft="5dp" />
+            android:background="@drawable/edit_text"/>
 
         <EditText
             android:id="@+id/inputEmail"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="15dp"
-            android:background="#f3f3f3"
             android:layout_below="@id/inputNome"
             android:hint="e-mail"
-            android:paddingLeft="5dp" />
+            android:background="@drawable/edit_text"/>
 
         <TextView
             android:id="@+id/textViewLocalAtuacao"
@@ -46,8 +31,10 @@
             android:paddingTop="30dp"
             android:textSize="20dp"
             android:layout_centerVertical="true"
+            android:textColor="#ffffff"
             android:layout_below="@id/inputEmail"
-            android:text="Local de Atuação"/>
+            android:text="Local de Atuação"
+            style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
 
         <LinearLayout
             android:id="@+id/LinearCep"
@@ -61,21 +48,20 @@
                 android:id="@+id/inputCEP"
                 android:layout_width="175dp"
                 android:layout_height="40dp"
-                android:background="#f3f3f3"
                 android:hint="CEP"
-                android:paddingLeft="5dp"
                 android:layout_toLeftOf="@+id/inputEstado"
-                android:layout_toStartOf="@+id/inputEstado" />
+                android:layout_toStartOf="@+id/inputEstado"
+                android:background="@drawable/edit_text"/>
 
             <Button
                 android:id="@+id/btnBuscaEndereco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Busca Endereço"
-                android:textColor="#fff"
                 android:layout_above="@+id/inputLogradouro"
                 android:layout_toRightOf="@+id/inputCEP"
-                android:layout_toEndOf="@+id/inputCEP" />
+                android:layout_toEndOf="@+id/inputCEP"
+                android:background="@drawable/btn_background" />
 
         </LinearLayout>
         <EditText
@@ -83,30 +69,27 @@
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="#f3f3f3"
             android:hint="Endereço"
             android:layout_below="@id/LinearCep"
-            android:paddingLeft="5dp" />
+            android:background="@drawable/edit_text"/>
 
         <EditText
             android:id="@+id/inputBairro"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="#f3f3f3"
             android:hint="Bairro"
             android:layout_below="@id/inputLogradouro"
-            android:paddingLeft="5dp" />
+            android:background="@drawable/edit_text"/>
 
         <EditText
             android:id="@+id/inputComplemento"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
-            android:background="#f3f3f3"
             android:hint="Complemento"
             android:layout_below="@id/inputBairro"
-            android:paddingLeft="5dp" />
+            android:background="@drawable/edit_text"/>
 
         <LinearLayout
             android:id="@+id/LinearCidadeEstado"
@@ -120,20 +103,19 @@
             android:id="@+id/inputCidade"
             android:layout_width="107dp"
             android:layout_height="40dp"
-            android:background="#f3f3f3"
             android:layout_below="@id/inputComplemento"
             android:hint="Cidade"
-            android:paddingLeft="5dp" />
+            android:background="@drawable/edit_text"/>
 
         <EditText
             android:id="@+id/inputEstado"
             android:layout_width="92dp"
             android:layout_height="40dp"
-            android:background="#f3f3f3"
             android:hint="Estado"
             android:layout_toRightOf="@+id/inputCidade"
             android:layout_marginLeft="3dp"
-            android:layout_toEndOf="@+id/inputCidade" />
+            android:layout_toEndOf="@+id/inputCidade"
+            android:background="@drawable/edit_text"/>
 
             </LinearLayout>
 
@@ -151,17 +133,14 @@
                 android:layout_height="fill_parent"
                 android:layout_below="@id/inputComplemento"
                 android:hint="Lat"
-                android:paddingLeft="5dp" />
+                android:background="@drawable/edit_text"/>
 
             <TextView
                 android:id="@+id/inputLongitude"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:hint="Long" />
-<!--                android:layout_toRightOf="@+id/inputLatitude"
-                android:layout_marginLeft="3dp"
-                android:layout_toEndOf="@+id/inputLatitude"-->
-
+                android:hint="Long"
+                android:background="@drawable/edit_text"/>
         </LinearLayout>
 
         <Button
@@ -173,7 +152,7 @@
             android:text="Continuar"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/LinearGeolocalizacao"
-            android:textColor="#fff" />
+            android:background="@drawable/btn_background" />
 
     </RelativeLayout>
 </ScrollView>

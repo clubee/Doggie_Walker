@@ -2,30 +2,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/Splash_Background">
+    style="@style/Splash_Login">
 
     <LinearLayout
         android:id="@+id/linLayout"
-        android:layout_below="@+id/imgLogo"
         style="@style/Splash_BackgroundTipoAcesso">
 
         <Button
             android:id="@+id/btn_Login"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
             android:text="Já tenho cadastro"
             android:background="@drawable/btn_background"
             android:onClick="acesso_login"/>
 
         <Button
             android:id="@+id/btn_CadastroDogWalker"
-            android:layout_marginTop="5dp"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_SouDogWalker"
-            android:layout_centerVertical="true"
+            android:layout_marginTop="5dp"
             android:background="@drawable/btn_background"
             android:text="Quero me cadastrar"
             android:onClick="cadastro_dogwalker"/>
@@ -33,29 +28,52 @@
 
     <LinearLayout
         android:id="@+id/linLayoutLogin"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/linLayout"
-        android:orientation="vertical">
+        android:layout_below="@+id/imgLogo"
+        style="@style/Splash_BackgroundTipoAcesso"
+        android:visibility="invisible">
 
         <EditText
             android:id="@+id/char_email"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:background="#f3f3f3"
             android:hint="Informe seu e-mail"
-            android:paddingLeft="5dp"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:background="@drawable/edit_text"/>
 
         <EditText
             android:id="@+id/char_password"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:background="#f3f3f3"
+            android:layout_marginTop="5dp"
             android:hint="Senha"
-            android:paddingLeft="5dp"
-            android:visibility="invisible"/>
+            android:visibility="invisible"
+            android:background="@drawable/edit_text"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linLayoutBtnLogin"
+        style="@style/Splash_BackgroundTipoAcesso"
+        android:visibility="invisible"
+        android:layout_below="@id/linLayoutLogin"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp">
+
+        <Button
+            android:id="@+id/btn_FazerLogin"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Fazer Login"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/btn_background"
+            android:onClick="acesso_login"/>
+
+        <Button
+            android:id="@+id/btn_Cancelar"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_background"
+            android:text="Cancelar"
+            android:onClick="cancelar"/>
+    </LinearLayout>
+
 </RelativeLayout>

@@ -39,17 +39,22 @@
 
         <EditText
             android:id="@+id/char_email"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:theme="@style/Base.Widget.AppCompat.EditText"
-            android:text="Informe seu email"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:background="#f3f3f3"
+            android:hint="Informe seu e-mail"
+            android:paddingLeft="5dp"
             android:visibility="invisible"/>
 
         <EditText
             android:id="@+id/char_password"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="Senha"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:background="#f3f3f3"
+            android:hint="Senha"
+            android:paddingLeft="5dp"
             android:visibility="invisible"/>
     </LinearLayout>
 </RelativeLayout>

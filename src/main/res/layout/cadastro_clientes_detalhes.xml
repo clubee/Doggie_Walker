@@ -1,45 +1,75 @@
-<!-- copyrighted content owned by Android Arena (www.androidarena.co.in)-->
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/scrollView1"
-    android:layout_width="fill_parent"
-    android:layout_height="match_parent">
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:fillViewport="true">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Spinner
-            android:id="@+id/spinner_TamPet"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/tamPet_array"
-            android:prompt="@string/tamPet_prompt"
-            android:layout_marginTop="50dp"/>
-
-        <EditText
-            android:id="@+id/char_SobreVoce"
-            android:inputType="textMultiLine"
-            android:lines="8"
-            android:minLines="6"
-            android:gravity="top|left"
-            android:maxLines="10"
-            android:layout_height="wrap_content"
+        <RelativeLayout
             android:layout_width="fill_parent"
-            android:scrollbars="vertical"
-            android:layout_below="@id/spinner_TamPet"
-            />
+            android:layout_height="wrap_content"
+            android:background="#ff000000">
 
-        <Button
-            android:id="@+id/btnCadastraCliente"
-            android:layout_width="fill_parent"
-            android:layout_height="38dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="16dp"
-            android:text="Sou um DoggieWalker"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/char_SobreVoce"
-            android:textColor="#fff" />
+            <LinearLayout
+                android:id="@+id/LinLayoutSpin"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/textViewTamPet"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:textSize="20dp"
+                    android:textColor="#bea165"
+                    android:text="Com quais tamanhos de pet você passeia?"
+                    android:layout_marginBottom="10dp"
+                    style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
 
-</ScrollView>
+                <Spinner
+                    android:id="@+id/spinner_TamPet"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/tamPet_array"
+                    android:prompt="@string/tamPet_prompt"
+                    android:background="#FFFFFF"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:id="@+id/textViewSobreVoce"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:textSize="20dp"
+                    android:textColor="#bea165"
+                    android:text="Conte-nos um pouco sobre você."
+                    android:layout_marginBottom="10dp"
+                    style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
+
+                <EditText
+                    android:id="@+id/char_SobreVoce"
+                    android:inputType="textMultiLine"
+                    android:lines="8"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:background="@drawable/edit_text"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:gravity="bottom"
+                android:layout_below="@id/LinLayoutSpin">
+
+                <Button
+                    android:id="@+id/btnCadastraCliente"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sou um DoggieWalker"
+                    android:layout_below="@id/char_SobreVoce"
+                    android:background="@drawable/btn_background" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>

@@ -31,7 +31,7 @@
             android:paddingTop="30dp"
             android:textSize="20dp"
             android:layout_centerVertical="true"
-            android:textColor="#ffffff"
+            android:textColor="#bea165"
             android:layout_below="@id/inputEmail"
             android:text="Local de Atuação"
             style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
@@ -55,8 +55,8 @@
 
             <Button
                 android:id="@+id/btnBuscaEndereco"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
                 android:text="Busca Endereço"
                 android:layout_above="@+id/inputLogradouro"
                 android:layout_toRightOf="@+id/inputCEP"

@@ -10,16 +10,17 @@
         style="@style/Splash_BackgroundTipoAcesso">
 
         <Button
-            android:id="@+id/btn_SouDogWalker"
+            android:id="@+id/btn_Login"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"
             android:text="Já tenho cadastro"
-            android:background="@drawable/btn_background"/>
+            android:background="@drawable/btn_background"
+            android:onClick="acesso_login"/>
 
         <Button
-            android:id="@+id/btn_ProcuroDogWalker"
+            android:id="@+id/btn_CadastroDogWalker"
             android:layout_marginTop="5dp"
             android:layout_width="250dp"
             android:layout_height="wrap_content"

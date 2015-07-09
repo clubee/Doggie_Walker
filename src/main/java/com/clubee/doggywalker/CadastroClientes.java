@@ -3,15 +3,19 @@ package com.clubee.doggywalker;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -20,6 +24,7 @@ import org.json.JSONObject;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +39,7 @@ public class CadastroClientes extends Activity {
     EditText char_Nome;
     EditText char_CEP;
     EditText char_Email;
+    EditText char_Password;
     EditText char_Cidade;
     EditText char_Estado;
     EditText char_Logradouro;
@@ -63,6 +69,7 @@ public class CadastroClientes extends Activity {
 
         char_Nome = (EditText) findViewById(R.id.inputNome);
         char_Email = (EditText) findViewById(R.id.inputEmail);
+        char_Password = (EditText)findViewById(R.id.char_password);
         char_Logradouro = (EditText) findViewById(R.id.inputLogradouro);
         char_Cidade = (EditText) findViewById(R.id.inputCidade);
         char_Estado = (EditText) findViewById(R.id.inputEstado);
@@ -71,9 +78,33 @@ public class CadastroClientes extends Activity {
         char_Lat = (TextView) findViewById(R.id.inputLatitude);
         char_Long = (TextView) findViewById(R.id.inputLongitude);
 
+        Drawable originalDrawable = char_Email.getBackground();
+
         //Criar botão
         Button btnBuscaCEP = (Button) findViewById(R.id.btnBuscaEndereco);
         Button btnProximaActivity = (Button) findViewById(R.id.btnContinuar);
+
+        //Valida conteúdo do email
+        char_Email.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+            @Override
+            public void onFocusChange(View v, boolean hasFocus){
+                if(!hasFocus){
+                    email = char_Email.getText().toString();
+                    boolean emailValido = isEmailValid(email);
+                    if(!emailValido){
+                        char_Email.setText("");
+                        char_Email.setHint("Preencha com um email válido");
+                        char_Email.setHintTextColor(Color.RED);
+                        //Toast.makeText(getApplicationContext(), "E-mail Inválido", Toast.LENGTH_LONG).show();
+                    } else {
+                        char_Email.setTextColor(Color.GREEN);
+                    }
+                }
+            }
+            private boolean isEmailValid(String email){
+                return Patterns.EMAIL_ADDRESS.matcher(email).matches();
+            }
+        });
 
 
         //Criar evento do botão

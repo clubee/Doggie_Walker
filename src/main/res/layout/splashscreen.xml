@@ -17,26 +17,42 @@
         android:layout_alignParentBottom="true"
         style="@style/Splash_Background">
 
-        <Button
-            android:id="@+id/btn_SouDogWalker"
-            android:layout_width="250dp"
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/fb_login_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_gravity="center_horizontal"
-            android:text="Sou um dog walker"
-            android:background="@drawable/btn_background"
-            android:onClick="cadastro_dogwalker"/>
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp" />
 
-        <Button
-            android:id="@+id/btn_ProcuroDogWalker"
-            android:layout_marginTop="5dp"
-            android:layout_width="250dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btn_SouDogWalker"
-            android:layout_centerVertical="true"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/btn_background"
-            android:text="Procuro um dog walker"
-            android:onClick="cadastro_usuario"/>
+            android:id="@+id/txtView"
+            android:layout_marginTop="55dp"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone"/>
+
+        <!--        <Button
+                    android:id="@+id/btn_SouDogWalker"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Sou um dog walker"
+                    android:background="@drawable/btn_background"
+                    android:onClick="cadastro_dogwalker"/>
+
+                <Button
+                    android:id="@+id/btn_ProcuroDogWalker"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_SouDogWalker"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/btn_background"
+                    android:text="Procuro um dog walker"
+                    android:onClick="cadastro_usuario"/>-->
     </LinearLayout>
 </RelativeLayout>

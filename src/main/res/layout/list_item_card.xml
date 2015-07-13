@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="fill_parent"
+	android:paddingLeft="15dp"
+	android:paddingRight="15dp"
+	android:descendantFocusability="beforeDescendants">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:paddingLeft="15dp"
+		android:paddingTop="15dp"
+		android:paddingBottom="15dp"
+		android:paddingRight="15dp"
+		android:background="@drawable/card_background_selector"
+		android:descendantFocusability="afterDescendants">
+
+        <!-- Product id (pid) - will be HIDDEN - used to pass to other activity -->
+        <TextView
+            android:id="@+id/pid"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+        <!-- Name Label -->
+        <TextView
+            android:id="@+id/nome"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="6dip"
+            android:paddingLeft="6dip"
+            android:textSize="17dip"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/llBotoes"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center|top"
+            android:layout_below="@+id/nome"
+            android:layout_centerHorizontal="true">
+
+            <TextView
+                android:id="@+id/titResultParcial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dip"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="#ff0081a2"
+                android:text="Resultado Parcial"/>
+
+            <TextView
+                android:id="@+id/resultadoSim"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:padding="3dip"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:textColor="#fffcfffa"
+                android:background="#ff07bd0e"/>
+
+            <TextView
+                android:id="@+id/resultadoNao"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:padding="3dip"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textColor="#fffffefd"
+                android:background="#ffff000d"/>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

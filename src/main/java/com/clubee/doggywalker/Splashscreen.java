@@ -13,17 +13,24 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
+import org.json.JSONObject;
+
+import java.util.Arrays;
+
 public class Splashscreen extends Activity {
 
     private TextView mainTextView;
     private static final int request_code = 5;
     public CallbackManager mCallbackManager;
+    String nome = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +43,31 @@ public class Splashscreen extends Activity {
 
         LoginButton loginButton = (LoginButton) findViewById(R.id.fb_login_button);
         mainTextView = (TextView) findViewById(R.id.txtView);
-        loginButton.setReadPermissions("user_friends");
-        loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions(Arrays.asList("public_profile"));
         LoginManager.getInstance().logOut(); //ensures that whenever we start the app we're logged out
 
         LoginManager.getInstance().registerCallback(mCallbackManager,
                 new FacebookCallback<LoginResult>() {
+
                     @Override
                     public void onSuccess(LoginResult loginResult) {
                         // App code
-                        Profile curProfile = Profile.getCurrentProfile();
-                        startNewIntent(curProfile);
+                        GraphRequest.newMeRequest(
+                                loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                                    @Override
+                                    public void onCompleted(JSONObject me, GraphResponse response) {
+                                        if (response.getError() != null) {
+                                            // handle error
+                                        } else {
+                                            nome = me.optString("name");
+                                            String id = me.optString("id");
+                                            // send email and id to your web server
+
+                                            Profile curProfile = Profile.getCurrentProfile();
+                                            startNewIntent(curProfile, nome);
+                                        }
+                                    }
+                                }).executeAsync();
                     }
 
                     @Override
@@ -63,12 +84,11 @@ public class Splashscreen extends Activity {
                 });
     }
 
-    private void startNewIntent(Profile elUsero){
-        Intent i = new Intent(this, CadastroClientes.class);
+    private void startNewIntent(Profile elUsero, String nome){
+        Intent i = new Intent(this, HomePage.class);
 
-/*        i.putExtra("firstName", elUsero.getFirstName());
-        i.putExtra("lastName", elUsero.getLastName());
-        i.putExtra("picURI", elUsero.getProfilePictureUri(1500,1500).toString());*/
+        i.putExtra("nome", nome);
+        i.putExtra("picURI", elUsero.getProfilePictureUri(1500,1500).toString());
         startActivityForResult(i, request_code);
     }
 

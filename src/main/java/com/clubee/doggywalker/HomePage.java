@@ -13,6 +13,8 @@ package com.clubee.doggywalker;
         import android.widget.ImageButton;
         import android.widget.TextView;
 
+        import com.facebook.Profile;
+
         import java.io.InputStream;
         import java.net.URL;
         import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class HomePage extends Activity implements OnItemClickListener
     GridViewAdapter gridviewAdapter;
     ArrayList<Item> data = new ArrayList<Item>();
 
+    private static final int request_code = 5;
     private TextView textView;
     private TextView textView1;
     private MediaPlayer mp;
@@ -125,9 +128,29 @@ public class HomePage extends Activity implements OnItemClickListener
         //String message = "Clicked : " + data.get(position).getTitle();
         //Toast.makeText(getApplicationContext(), message , Toast.LENGTH_SHORT).show();
         if (data.get(position).getTitle() == "Sou um Doggiewalker"){
-            Intent i = new Intent(getApplicationContext(), HomePage.class);
-            startActivity(i);
+            Bundle extras = getIntent().getExtras();
+            if (extras == null) {
+                return;
+            }
+            String nome = extras.getString("nome");
+            String pic = extras.getString("picURI");
+
+            textView = (TextView) findViewById(R.id.txtView);
+            textView1 = (TextView) findViewById(R.id.txtView1);
+            textView.setText("Olá, " + nome + "!");
+            new SetImageURI().execute(pic);
+            Profile curProfile = Profile.getCurrentProfile();
+            startNewIntent(curProfile, nome);
         }else{
+            Intent i = new Intent(getApplicationContext(), Cliente.class);
+            startActivity(i);
         }
+    }
+    private void startNewIntent(Profile elUsero, String nome){
+        Intent i = new Intent(this, DoggieWalker.class);
+
+        i.putExtra("nome", nome);
+        i.putExtra("picURI", elUsero.getProfilePictureUri(1500,1500).toString());
+        startActivityForResult(i, request_code);
     }
 }

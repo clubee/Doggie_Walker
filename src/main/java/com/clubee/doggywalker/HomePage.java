@@ -12,6 +12,7 @@ package com.clubee.doggywalker;
         import android.widget.GridView;
         import android.widget.ImageButton;
         import android.widget.TextView;
+        import android.widget.Toast;
 
         import com.facebook.Profile;
 
@@ -72,21 +73,19 @@ public class HomePage extends Activity implements OnItemClickListener
         finish();
     }
 
-    public void pictureClick(View v){
-        mp.start();
-    }
 
     private class SetImageURI extends AsyncTask<String, Void, Drawable> {
 
         @Override
         protected Drawable doInBackground(String... params) {
             Drawable dr = null;
+            String exc = null;
             try {
                 URL url = new URL(params[0]);
                 InputStream img = (InputStream) url.getContent();
                 dr = Drawable.createFromStream(img, "src");
             } catch (Exception e) {
-                textView.setText("Uh oh! An error occurred: " + e.toString());
+                Toast.makeText(HomePage.this, "Ocorreu um problema", Toast.LENGTH_SHORT).show();
             }
             return dr;
         }

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- copyrighted content owned by Android Arena (www.androidarena.co.in)-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView1"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/Splash_Background">
@@ -38,10 +44,159 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/txtView1"
+        android:id="@+id/txtView_TituloCompletePerfil"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColor="#FFFFFF"
-        android:visibility="invisible"/>
+        android:hint="Complete o seu perfil"
+        android:textColorHint="#faff47"
+        android:layout_below="@+id/LinearLayoutPerfil"/>
+
+    <EditText
+        android:id="@+id/inputNome"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:hint="Nome"
+        android:background="@drawable/edit_text"
+        android:layout_below="@+id/txtView_TituloCompletePerfil"/>
+
+    <EditText
+        android:id="@+id/inputEmail"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/inputNome"
+        android:hint="e-mail"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edit_text"/>
+
+    <EditText
+        android:id="@+id/inputPassword"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/inputEmail"
+        android:hint="e-mail"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/edit_text"/>
+
+    <TextView
+        android:id="@+id/textViewLocalAtuacao"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="30dp"
+        android:textSize="20dp"
+        android:layout_centerVertical="true"
+        android:textColor="#bea165"
+        android:layout_below="@id/inputPassword"
+        android:text="Local de Atuação"
+        style="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"/>
+
+    <LinearLayout
+        android:id="@+id/LinearCep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:layout_below="@id/textViewLocalAtuacao">
+
+        <EditText
+            android:id="@+id/inputCEP"
+            android:layout_width="175dp"
+            android:layout_height="40dp"
+            android:hint="CEP"
+            android:layout_toLeftOf="@+id/inputEstado"
+            android:layout_toStartOf="@+id/inputEstado"
+            android:background="@drawable/edit_text"/>
+
+        <Button
+            android:id="@+id/btnBuscaEndereco"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="Busca Endereço"
+            android:layout_above="@+id/inputLogradouro"
+            android:layout_toRightOf="@+id/inputCEP"
+            android:layout_toEndOf="@+id/inputCEP"
+            android:background="@drawable/btn_background" />
+
+    </LinearLayout>
+    <EditText
+        android:id="@+id/inputLogradouro"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:hint="Endereço"
+        android:layout_below="@id/LinearCep"
+        android:background="@drawable/edit_text"/>
+
+    <EditText
+        android:id="@+id/inputBairro"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:hint="Bairro"
+        android:layout_below="@id/inputLogradouro"
+        android:background="@drawable/edit_text"/>
+
+    <EditText
+        android:id="@+id/inputComplemento"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="15dp"
+        android:hint="Complemento"
+        android:layout_below="@id/inputBairro"
+        android:background="@drawable/edit_text"/>
+
+    <LinearLayout
+        android:id="@+id/LinearCidadeEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="15dp"
+        android:layout_below="@id/inputComplemento">
+
+        <EditText
+            android:id="@+id/inputCidade"
+            android:layout_width="107dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/inputComplemento"
+            android:hint="Cidade"
+            android:background="@drawable/edit_text"/>
+
+        <EditText
+            android:id="@+id/inputEstado"
+            android:layout_width="92dp"
+            android:layout_height="40dp"
+            android:hint="Estado"
+            android:layout_toRightOf="@+id/inputCidade"
+            android:layout_marginLeft="3dp"
+            android:layout_toEndOf="@+id/inputCidade"
+            android:background="@drawable/edit_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearGeolocalizacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:layout_below="@id/LinearCidadeEstado"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/inputLatitude"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/inputComplemento"
+            android:hint="Lat"
+            android:background="@drawable/edit_text"/>
+
+        <TextView
+            android:id="@+id/inputLongitude"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:hint="Long"
+            android:background="@drawable/edit_text"/>
+    </LinearLayout>
 
 </RelativeLayout>
+    </ScrollView>

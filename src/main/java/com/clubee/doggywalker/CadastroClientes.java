@@ -237,11 +237,9 @@ public class CadastroClientes extends Activity {
         }
     }
 
+/*
     class CadastraCliente extends AsyncTask<String, String, String> {
 
-        /**
-         * Before starting background thread Show Progress Dialog
-         */
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -252,9 +250,6 @@ public class CadastroClientes extends Activity {
             pDialog.show();
         }
 
-        /**
-         * Creating product
-         */
         protected String doInBackground(String... args) {
             String Nome = char_Nome.getText().toString();
             String Email = char_Email.getText().toString();
@@ -299,13 +294,9 @@ public class CadastroClientes extends Activity {
             return null;
         }
 
-        /**
-         * After completing background task Dismiss the progress dialog
-         * *
-         */
         protected void onPostExecute(String file_url) {
             // dismiss the dialog once done
             pDialog.dismiss();
         }
-    }
+    }*/
 }

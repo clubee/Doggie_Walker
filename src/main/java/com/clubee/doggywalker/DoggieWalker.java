@@ -105,11 +105,11 @@ public class DoggieWalker extends Activity {
                     }
                 }
             }
+
             private boolean isEmailValid(String email){
                 return Patterns.EMAIL_ADDRESS.matcher(email).matches();
             }
         });
-
 
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
@@ -198,6 +198,7 @@ public class DoggieWalker extends Activity {
         }
     }
 
+
     private class GeocoderHandler extends Handler {
         @Override
         public void handleMessage(Message message) {
@@ -247,5 +248,4 @@ public class DoggieWalker extends Activity {
             imgView.setImageDrawable(result);
         }
     }
-
 }

@@ -99,8 +99,8 @@ public class Cadastro_ClientesDetalhes extends Activity {
             String Latitude = latitude.toString();
             String Longitude = longitude.toString();
             String TipoLicenca = "DogWalker";
-            String TamPet = tamanhoPet.getSelectedItem().toString();
-            String SobreVc = descricao.getText().toString();
+            /*String TamPet = tamanhoPet.getSelectedItem().toString();
+            String SobreVc = descricao.getText().toString();*/
 
 
             Nome = getIntent().getStringExtra("nome");
@@ -126,8 +126,10 @@ public class Cadastro_ClientesDetalhes extends Activity {
             params.add(new BasicNameValuePair("char_Lat", Latitude));
             params.add(new BasicNameValuePair("char_Long", Longitude));
             params.add(new BasicNameValuePair("char_TipoLicenca",TipoLicenca));
+/*
             params.add(new BasicNameValuePair("char_TamPet", TamPet));
             params.add(new BasicNameValuePair("char_Descricao", SobreVc));
+*/
 
 
             // getting JSON Object

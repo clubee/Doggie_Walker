@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 
 import com.facebook.CallbackManager;
 import com.facebook.FacebookSdk;
+import com.facebook.Profile;
 
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
@@ -85,8 +87,11 @@ public class DoggieWalker extends Activity {
 
         Drawable originalDrawable = char_Email.getBackground();
 
-        //Criar botão
+        //Criar botão buscaCep
         Button btnBuscaCEP = (Button) findViewById(R.id.btnBuscaEndereco);
+
+        //Criar botão Continuar
+        Button btnContinuar = (Button) findViewById(R.id.btnContinuar);
 
         //Valida conteúdo do email
         char_Email.setOnFocusChangeListener(new View.OnFocusChangeListener(){
@@ -132,6 +137,17 @@ public class DoggieWalker extends Activity {
             }
         });
 
+        //Criar evento do botão
+        btnContinuar.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(DoggieWalker.this, Cadastro_ClientesDetalhes.class);
+                startActivity(i);
+                finish();
+            }
+        });
     }
 
     private class HttpRequestTask extends AsyncTask<Void, Void, DAOPostmon> {
@@ -146,53 +162,70 @@ public class DoggieWalker extends Activity {
                 DAOPostmon DAOPostmon = restTemplate.getForObject(url, DAOPostmon.class);
                 return DAOPostmon;
             } catch (Exception e) {
-                restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-                DAOPostmon DAOPostmon = restTemplate.getForObject(url, DAOPostmon.class);
-                return DAOPostmon;
+                e.printStackTrace();
+                return null;
             }
         }
 
         @Override
         protected void onPostExecute(DAOPostmon DAOPostmon) {
 
-            //quando a tag Logradouro estiver disponiivel no retorno da api rest
-            if (DAOPostmon.getLogradouro() == null) {
+            try {
+                //quando a tag Logradouro estiver disponiivel no retorno da api rest
+                if (DAOPostmon == null || DAOPostmon.getLogradouro() == null) {
 
+                    TextView greetingEndereco = (TextView) findViewById(R.id.inputLogradouro);
+                    TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
+                    TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
+                    TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
+                    TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
+
+                    greetingEndereco.setText(DAOPostmon.getEndereco().toUpperCase());
+                    greetingCidade.setText(DAOPostmon.getCidade().toUpperCase());
+                    greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
+                    greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
+                    greetingCEP.setText(DAOPostmon.getCep());
+
+                    String endereco = char_Logradouro.getText().toString();
+                    BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
+                    localizacaoEnd.getAddressFromLocation(endereco,
+                            getApplicationContext(), new GeocoderHandler());
+
+                } else {
+
+                    //senão, quando não tiver a tag logradouro, usar endereco
+
+                    TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
+                    TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
+                    TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
+                    TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
+                    TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
+                    greetingLogradouro.setText(DAOPostmon.getLogradouro().toUpperCase());
+                    greetingCidade.setText(DAOPostmon.getCidade().toUpperCase());
+                    greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
+                    greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
+                    greetingCEP.setText(DAOPostmon.getCep());
+
+                    String endereco = char_Logradouro.getText().toString();
+                    BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
+                    localizacaoEnd.getAddressFromLocation(endereco,
+                            getApplicationContext(), new GeocoderHandler());
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
                 TextView greetingEndereco = (TextView) findViewById(R.id.inputLogradouro);
                 TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
                 TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
                 TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
                 TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
-                greetingEndereco.setText(DAOPostmon.getEndereco().toUpperCase());
-                greetingCidade.setText(DAOPostmon.getCidade().toUpperCase());
-                greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
-                greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
-                greetingCEP.setText(DAOPostmon.getCep());
 
-                String endereco = char_Logradouro.getText().toString();
-                BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
-                localizacaoEnd.getAddressFromLocation(endereco,
-                        getApplicationContext(), new GeocoderHandler());
-
-            } else {
-
-                //senão, quando não tiver a tag logradouro, usar endereco
-
-                TextView greetingLogradouro = (TextView) findViewById(R.id.inputLogradouro);
-                TextView greetingBairro = (TextView) findViewById(R.id.inputBairro);
-                TextView greetingCidade = (TextView) findViewById(R.id.inputCidade);
-                TextView greetingEstado = (TextView) findViewById(R.id.inputEstado);
-                TextView greetingCEP = (TextView) findViewById(R.id.inputCEP);
-                greetingLogradouro.setText(DAOPostmon.getLogradouro().toUpperCase());
-                greetingCidade.setText(DAOPostmon.getCidade().toUpperCase());
-                greetingBairro.setText(DAOPostmon.getBairro().toUpperCase());
-                greetingEstado.setText(DAOPostmon.getEstado().toUpperCase());
-                greetingCEP.setText(DAOPostmon.getCep());
-
-                String endereco = char_Logradouro.getText().toString();
-                BuscaGeolocalizacao localizacaoEnd = new BuscaGeolocalizacao();
-                localizacaoEnd.getAddressFromLocation(endereco,
-                        getApplicationContext(), new GeocoderHandler());
+                greetingEndereco.setText("ENDEREÇO NÃO ENCONTRADO");
+                greetingBairro.setText("");
+                greetingCidade.setText("");
+                greetingEstado.setText("");
+                greetingCEP.setText("");
+                Toast.makeText(getBaseContext(),"Entramos em contato por email. Continue o cadastro.",Toast.LENGTH_SHORT).show();
 
             }
         }
